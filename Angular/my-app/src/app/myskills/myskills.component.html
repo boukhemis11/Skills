@@ -1,38 +1,29 @@
 <div class="uk-padding">
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-    <div class="uk-card-media-left uk-cover-container">
-        <img src="assets/skills.jpg" alt="" uk-cover>
-        <canvas width="600" height="400"></canvas>
-    </div>
-    <div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title">Media Left</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-        </div>
-    </div>
+<table class="uk-table uk-table-middle uk-table-divider">
+    <thead>
+        <tr>
+            <th class="uk-width-small">Prénom</th>
+            <th class="uk-width-small">Compétance</th>
+            <th class="uk-width-small">Télephone</th>
+            <th class="uk-width-small">Adresse</th>
+            <th class="uk-width-small">Salaire</th>
+            <th class="uk-width-small">Remarque</th>
+            <th class="uk-width-small">Action</th>
+            <th class="uk-width-small">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let skill of skills | async">
+            <td>{{ skill.name }}</td>
+            <td>{{ skill.skill }}</td>
+            <td>{{ skill.phone }}</td>
+            <td>{{ skill.adress }}</td>
+            <td>{{ skill.salaire }}</td>
+            <td>{{ skill.remarque }}</td>
+            <td><button class="uk-button uk-button-primary" type="button" (click)="onEdit(skill)">Modifier</button></td>
+            <td><button class="uk-button uk-button-danger" type="button" (click)="onDelete(skill.$key)">Supprimer</button></td>
+        </tr>
+    </tbody>
+</table>
 </div>
 
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-        <img src="assets/skills.jpg" alt="" uk-cover>
-        <canvas width="600" height="400"></canvas>
-    </div>
-    <div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title">Media Right</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-        </div>
-    </div>
-</div>
-</div>
-
-<table class="table table-striped">
-    <tr>
-      <th>Share Name</th>
-      <th>Share Price</th>
-    </tr>
-    <tr *ngFor="let share of shares | async">
-      <td>{{ share.name }}</td>
-
-    </tr>
-  </table>

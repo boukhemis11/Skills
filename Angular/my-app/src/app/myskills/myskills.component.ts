@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { ShareService } from '../share.service';
 
@@ -11,14 +10,24 @@ import { ShareService } from '../share.service';
 export class MyskillsComponent implements OnInit {
 
 
-  public shares: Observable<any[]>;
-  constructor(private shareservice: ShareService) { }
+  public skills: Observable<any[]>;
+  constructor(private shareservice: ShareService) {
+
+   }
 
   ngOnInit() {
-    this.shares = this.getShares('/myskills');
+    this.skills = this.getSkills('skills');
+    console.log(this.skills);
   }
-  getShares(path) {
-    return this.shareservice.getShares(path);
+
+  getSkills(path) {
+    return this.shareservice.getSkills(path);
+  }
+  onEdit(data) {
+    return this.shareservice.onEdit(data);
+  }
+  onDelete($key) {
+    return this.shareservice.onDelete($key);
   }
 
 }
