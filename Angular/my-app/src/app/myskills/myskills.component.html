@@ -25,3 +25,14 @@
     </div>
 </div>
 </div>
+
+<table class="table table-striped">
+    <tr>
+      <th>Share Name</th>
+      <th>Share Price</th>
+    </tr>
+    <tr *ngFor="let share of shares | async">
+      <td>{{ share.name }}</td>
+
+    </tr>
+  </table>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-
+import { Router } from '@angular/router';
+import { ShareService } from '../share.service';
 
 @Component({
   selector: 'app-addskill',
@@ -22,15 +22,21 @@ export class AddskillComponent implements OnInit {
 
 itemList: AngularFireList<any>;
 
-  constructor(db: AngularFireDatabase) {
-    this.itemList = db.list('skills');
+  constructor(public shareservice: ShareService , public router: Router) {
+
    }
 
   ngOnInit() {
   }
 
   insertSkill() {
+   this.shareservice.insertSkill(this.data);
+   this.router.navigate(['/myskills']);
+ }
+
+  inssertSkill() {
     this.itemList.push(this.data);
+    this.router.navigate(['/myskills']);
   }
 
 }

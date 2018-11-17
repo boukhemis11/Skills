@@ -35,7 +35,7 @@ import { MyskillsComponent } from './myskills/myskills.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AngularFireDatabaseModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

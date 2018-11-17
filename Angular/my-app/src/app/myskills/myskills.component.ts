@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { ShareService } from '../share.service';
 
 @Component({
   selector: 'app-myskills',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyskillsComponent implements OnInit {
 
-  constructor() { }
+
+  public shares: Observable<any[]>;
+  constructor(private shareservice: ShareService) { }
 
   ngOnInit() {
+    this.shares = this.getShares('/myskills');
+  }
+  getShares(path) {
+    return this.shareservice.getShares(path);
   }
 
 }
